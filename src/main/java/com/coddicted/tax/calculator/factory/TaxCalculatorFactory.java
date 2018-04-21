@@ -3,10 +3,12 @@ package com.coddicted.tax.calculator.factory;
 import java.math.BigDecimal;
 
 import com.coddicted.tax.calculator.assessYear.FinancialYear;
+import com.coddicted.tax.calculator.exception.AssessmentYearNotSupportedException;
 import com.coddicted.tax.calculator.exception.FinYearNotSupportedException;
 import com.coddicted.tax.calculator.factory.fy2017_18.TaxCalculatorImpl;
+import com.coddicted.tax.calculator.pojo.TaxCalculatorInputPOJO;
+import com.coddicted.tax.calculator.pojo.TaxInfo;
 import com.coddicted.tax.calculator.util.PersonType;
-import com.coddicted.tax.calculator.util.TaxInfo;
 
 public class TaxCalculatorFactory {
 
@@ -17,6 +19,7 @@ public class TaxCalculatorFactory {
 	 * @return
 	 * @throws FinYearNotSupportedException
 	 */
+	@Deprecated
 	public static TaxInfo calculateTax(BigDecimal totalIncome, PersonType pt, FinancialYear fy)
 			throws FinYearNotSupportedException {
 
@@ -32,5 +35,25 @@ public class TaxCalculatorFactory {
 		}
 
 		return tc.calculateTax(totalIncome, pt);
+	}
+
+	/**
+	 * @param input
+	 * @return
+	 * @throws AssessmentYearNotSupportedException
+	 */
+	public static TaxInfo calculateTax(TaxCalculatorInputPOJO input) throws AssessmentYearNotSupportedException {
+		TaxCalculator tc = null;
+		
+		switch (input.getAy()) {
+		case AY_2018_19:
+			tc = new TaxCalculatorImpl();
+			break;
+
+		default:
+			throw new AssessmentYearNotSupportedException(input.getAy());
+		}
+
+		return tc.calculateTax(input);
 	}
 }

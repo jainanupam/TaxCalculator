@@ -4,8 +4,8 @@ public enum PersonType {
 
 	MALE("Male"),
 	FEMALE("Female"),
-	SENIOR_CITIZEN("Senior Citizen"),
-	SENIOR_CITIZEN_ABOVE_80("Senior Citizen (Above 80)"),;
+	SENIOR_CITIZEN("Senior Citizen (60 - 80 years)"),
+	SUPER_SENIOR_CITIZEN("Super Senior Citizen (Above 80)"),;
 	
 	private final String type;
 	
@@ -20,6 +20,14 @@ public enum PersonType {
 	@Override
 	public String toString() {
 		return this.type;
+	}
+	
+	public static PersonType valueFor(String personType) {
+		for (PersonType pt : PersonType.values()) {
+			if(pt.type.equals(personType))
+				return pt;
+		}
+		return null;
 	}
 	
 	/**

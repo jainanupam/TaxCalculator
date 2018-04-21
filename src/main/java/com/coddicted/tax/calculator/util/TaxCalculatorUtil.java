@@ -1,5 +1,6 @@
 package com.coddicted.tax.calculator.util;
 
+import com.coddicted.tax.calculator.assessYear.AssessmentYear;
 import com.coddicted.tax.calculator.assessYear.FinancialYear;
 
 public class TaxCalculatorUtil {
@@ -23,6 +24,17 @@ public class TaxCalculatorUtil {
 			persTypes[i++] = pt.toString();
 		}
 		return persTypes;
+	}
+	
+	public static String[] getSupportedAssessmentYears(){
+		AssessmentYear[] ays = AssessmentYear.values();
+		String[] assessYears = new String[ays.length];
+		int i = 0;
+		for(AssessmentYear ay: ays){
+			assessYears[i++] = ay.toString();
+		}
+		
+		return assessYears;
 	}
 	
 	public static void main(String[] args) {
