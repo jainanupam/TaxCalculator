@@ -14,8 +14,9 @@ public class SuperSeniorTaxCalculator {
 		TaxInfo taxInfo = new TaxInfo();
 		BigDecimal taxAmount = BigDecimal.ZERO;
 
+		BigDecimal maxDeductionAllowed = TaxCalculatorUtil.getMaxDeductableAmount(input.getTotalDeductions());
         // Get the net taxable income after leaving out deductions and rebate from first slab
-        BigDecimal netTaxableIncome = input.getTotalIncome().subtract(input.getTotalDeductions());
+        BigDecimal netTaxableIncome = input.getTotalIncome().subtract(maxDeductionAllowed);
         netTaxableIncome = netTaxableIncome.subtract(SLAB1_BASE_SUPER_SENIORS);
         // TODO need to change to logger
         System.out.println("Net taxable income for Super Senior citizen: " + netTaxableIncome.toString());

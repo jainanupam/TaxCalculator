@@ -35,5 +35,14 @@ public class TaxCalculatorFactoryTest {
 		ti = TaxCalculatorFactory.calculateTax(input);
 		System.out.println(ti.toString());
 		assertEquals(9785.00, ti.getTotalPayableAmount().doubleValue(), 0.01);
+		
+		// Test for super senior citizen
+		System.out.println("----------- Testing for Max Discount allowed --------------");
+		input.setPersonType(PersonType.MALE);
+		input.setTotalDeductions(new BigDecimal(5_00_000));
+		ti = TaxCalculatorFactory.calculateTax(input);
+		System.out.println(ti.toString());
+		assertEquals(5150.00, ti.getTotalPayableAmount().doubleValue(), 0.01);
+
 	}
 }

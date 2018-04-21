@@ -17,4 +17,6 @@ public class TaxConstants {
     
     public static final BigDecimal surchargeRate = new BigDecimal(0.03);	// 3%
 
+    // TODO need to check this amount
+    public static final BigDecimal MAX_DEDUCTIBLE_AMOUNT = new BigDecimal(1_50_000);
 }
