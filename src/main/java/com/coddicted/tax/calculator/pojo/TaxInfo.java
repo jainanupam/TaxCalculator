@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class TaxInfo {
 
+	private BigDecimal totalDeductionsConsidered;
 	private BigDecimal netTaxableIncome;
 	private BigDecimal taxAmount;
 	private BigDecimal surcharge;
@@ -56,6 +57,14 @@ public class TaxInfo {
 
 	public void setTotalPayableAmount(BigDecimal totalPayableAmount) {
 		this.totalPayableAmount = totalPayableAmount;
+	}
+
+	public BigDecimal getTotalDeductionsConsidered() {
+		return totalDeductionsConsidered;
+	}
+
+	public void setTotalDeductionsConsidered(BigDecimal totalDeductionsConsidered) {
+		this.totalDeductionsConsidered = totalDeductionsConsidered;
 	}
 
 }
