@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.coddicted.tax</groupId>
   <artifactId>TaxCalculator</artifactId>
-  <version>0.0.1-alpha</version>
+  <version>0.1.0</version>
   <description>Library for income tax calculations</description>
   <build>
     <plugins>
